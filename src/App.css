@@ -22,3 +22,113 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/* ######## CROSSWORD GRID ########## */
+
+#wrapper {
+  background-repeat: no-repeat;
+  background-position: top;
+  border: 1px;
+  width: 600px;
+  height: 500px;
+  margin-left: 75px;
+  padding-bottom: 1000px;
+  text-align: left;
+}
+
+div {
+  contentEditable: true;
+}
+
+.center-align {
+  text-align: center;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.right-align {
+  text-align: right;
+  margin-right: 50px;
+}
+
+.right-self {
+  align-self: flex-end;
+}
+
+.fill-container {
+  align-self: stretch;
+}
+
+.filled {
+  width: 40px;
+  height: 40px;
+  /*background: rgba(224, 225, 226, 1);*/
+  background: black;
+  border: 1px;
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+
+.empty {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border: 1px solid rgba(45, 46, 62, 1);
+  border: 1px solid rgba(126, 162, 107, 1);
+  border: 1px solid black;
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+
+.numbered {
+  counter-increment: value;
+}
+
+.numbered:nth-of-type(n)::before {
+  content: counter(value);
+  font-size: 10px;
+  position: absolute;
+}
+
+.letters {
+  font-size: 34px;
+  color: grey;
+  margin: 5px;
+  margin-left: 20px;
+}
+
+.textbox {
+  width: 60px;
+  height: 60px;
+}
+
+.answer-text {
+  font-size: 22px;
+  text-align: left;
+  list-style-type: none;
+}
+
+.clue-divs {
+  width: 80%;
+  max-width: 500px;
+  margin-top: -1000px;
+  margin-left: 650px;
+  padding-bottom: 300px;
+}
+
+.ui.grid {
+  margin-right: 50rem !important;
+}
+
+#output{
+  width:120px;
+  height:25px;
+  /*background-color:#CCC;
+  border:1px solid #999;*/
+}
+
+#center {
+  margin-left: 47%;
+}
