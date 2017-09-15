@@ -7,7 +7,7 @@ export class CrosswordContainer extends Component {
   render() {
     return (
       <div>
-        <CrosswordGrid gridInfo={this.props.gridInfo} />
+        <CrosswordGrid gridInfo={this.props.gridInfo.crosswordGrid} />
       </div>
     )
   }
