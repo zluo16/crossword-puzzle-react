@@ -39,6 +39,8 @@ export class GridBox extends Component {
   }
 }
 
+// const mapStateToProps = (state) => { gridInfo: state }
+
 const mapDispatchToProps = (dispatch) => {
   return { actions: bindActionCreators(actions, dispatch) }
 }
