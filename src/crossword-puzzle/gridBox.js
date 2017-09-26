@@ -11,7 +11,6 @@ export class GridBox extends Component {
   }
 
   handleInput = (event) => {
-    // this.setState({ value: event.target.value, id: event.target.id })
     let input = Object.assign({}, { value: event.target.value.toUpperCase() }, { id: event.target.id })
     this.props.actions.addInput(input)
     this.setState({
@@ -32,14 +31,12 @@ export class GridBox extends Component {
         {this.state.selected ?
           <input type="text" id={this.props.boxId} className="textbox" maxLength="1" onChange={this.handleInput} />
           :
-          <p>{this.state.value}</p>
+          <p className="center-words">{this.state.value}</p>
         }
       </div>
     )
   }
 }
-
-// const mapStateToProps = (state) => { gridInfo: state }
 
 const mapDispatchToProps = (dispatch) => {
   return { actions: bindActionCreators(actions, dispatch) }

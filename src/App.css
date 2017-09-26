@@ -30,9 +30,9 @@
   background-position: top;
   border: 1px;
   width: 600px;
-  height: 500px;
-  margin-left: 75px;
-  padding-bottom: 1000px;
+  height: 400px;
+  margin-left: 400px;
+  padding-bottom: 200px;
   text-align: left;
 }
 
@@ -88,8 +88,9 @@ div {
 
 .numbered:nth-of-type(n)::before {
   content: counter(value);
-  font-size: 10px;
+  font-size: 11px;
   position: absolute;
+  padding-left: 2px;
 }
 
 .letters {
@@ -100,14 +101,8 @@ div {
 }
 
 .textbox {
-  width: 60px;
-  height: 60px;
-}
-
-.answer-text {
-  font-size: 22px;
-  text-align: left;
-  list-style-type: none;
+  width: 40px;
+  height: 40px;
 }
 
 .clue-divs {
@@ -120,6 +115,43 @@ div {
 
 .ui.grid {
   margin-right: 50rem !important;
+}
+
+p.center-words {
+  text-align: center;
+  font-size: 20px;
+  padding-top: 3px;
+  padding-left: 3px;
+}
+
+.no-bullets {
+  list-style: none;
+  width: 500px;
+}
+
+.left-pusher {
+  margin-left: 200px;
+}
+
+.make-wider {
+  width: 1000px !important;
+}
+
+.left-adjustment {
+  margin-left: 600px;
+}
+
+.make-tighter {
+  width: 500px !important;
+}
+
+.center-button {
+  margin-top: 25px !important;
+  margin-left: 260px !important;
+}
+
+.clue-text {
+  font-size: 17px !important;
 }
 
 #output{
