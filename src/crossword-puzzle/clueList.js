@@ -6,7 +6,7 @@ const ClueList = ({ clues, numbers }) => {
   return (
     <Grid className="make-tighter">
       <ul className="no-bullets">
-        {clues.map((clue, i) => <Clue clueInfo={clue} num={numbers[i]} />)}
+        {clues.map((clue, i) => <Clue clueInfo={clue} num={numbers[i]} key={numbers[i]} />)}
       </ul>
     </Grid>
   )

@@ -2,13 +2,27 @@ import React, { Component } from 'react'
 import CrosswordGrid from './crosswordGrid'
 import { ConnectedCrosswordCluesContainer } from './crosswordCluesContainer'
 import { connect } from 'react-redux'
-import { Button, Modal } from 'semantic-ui-react'
+import { Modal, Header } from 'semantic-ui-react'
+import { bindActionCreators } from 'redux'
+import * as actions from '../actions/fetchActions'
 
 export class CrosswordContainer extends Component {
 
   state = {
     open: false,
     completed: false
+  }
+
+  componentDidMount() {
+    if (this.props.gridInfo.length === 0) {
+      this.props.actions.fetchPuzzle()
+      this.props.actions.fetchClues()
+    }
+  }
+
+  onGenerate = () => {
+    this.props.actions.fetchPuzzle()
+    this.props.actions.fetchClues()
   }
 
   onSubmit = () => {
@@ -27,7 +41,8 @@ export class CrosswordContainer extends Component {
 
     return (
       <div>
-        <CrosswordGrid gridInfo={this.props.gridInfo} onSubmit={this.onSubmit} />
+        <Header size="huge" className="center-align">Crossword Puzzle</Header>
+        <CrosswordGrid gridInfo={this.props.gridInfo} onSubmit={this.onSubmit} onGenerate={this.onGenerate} />
         <ConnectedCrosswordCluesContainer />
 
         <Modal size="tiny" open={this.state.open} onClose={this.close}>
@@ -47,4 +62,8 @@ const mapStateToProps = (state) => {
   return { gridInfo: state.crosswordGrid }
 }
 
-export const ConnectedCrosswordContainer = connect(mapStateToProps)(CrosswordContainer)
+const mapDispatchToProps = (dispatch) => {
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+export const ConnectedCrosswordContainer = connect(mapStateToProps, mapDispatchToProps)(CrosswordContainer)

@@ -26,10 +26,12 @@ export class GridBox extends Component {
   }
 
   render() {
+    const name = `${this.props.boxId}Input`
+
     return (
       <div className={this.props.boxType} id={this.props.boxId} onClick={this.handleClick}>
         {this.state.selected ?
-          <input type="text" id={this.props.boxId} className="textbox" maxLength="1" onChange={this.handleInput} />
+          <input type="text" id={this.props.boxId} name={name} className="textbox" maxLength="1" onChange={this.handleInput} autoFocus />
           :
           <p className="center-words">{this.state.value}</p>
         }
