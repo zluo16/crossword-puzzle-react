@@ -7,6 +7,7 @@ export default function crosswordGrid(state = [], action) {
       return state
 
     case 'FETCH_CROSSWORD':
+      console.log(action.payload);
       return action.payload
 
     default:

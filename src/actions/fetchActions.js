@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch'
 export function fetchPuzzle() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_PUZZLE' })
-    return fetch('http://localhost:4000/api/v1/puzzles/generate')
+    return fetch('https://crossword-puzzle-api.herokuapp.com/api/v1/puzzles/generate')
       .then(res => res.json())
       .then(res => {
         let grid = res.grid_boxes.sort((a, b) => a.boxId - b.boxId)
@@ -15,7 +15,7 @@ export function fetchPuzzle() {
 export function fetchClues() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_CLUES' })
-    return fetch('http://localhost:4000/api/v1/puzzles/generate')
+    return fetch('https://crossword-puzzle-api.herokuapp.com/api/v1/puzzles/generate')
       .then(res => res.json())
       .then(res => {
         let clues = res.puzzle_words.map(word => {
