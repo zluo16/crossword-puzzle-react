@@ -1,4 +1,3 @@
-import headers from './headers'
 const baseUrl = 'https://crossword-puzzle-api.herokuapp.com/api/v1'
 
 export default class AuthAdapter {

@@ -31,8 +31,8 @@
   border: 1px;
   width: 600px;
   height: 400px;
-  margin-left: 400px;
-  padding-bottom: 200px;
+  margin-left: 28.5%;
+  padding-bottom: 1%;
   text-align: left;
 }
 
@@ -40,11 +40,11 @@ div {
   contentEditable: true;
 }
 
-.center-align {
+div.center-align {
   text-align: center !important;
   align-self: center !important;
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
+  margin-top: 1% !important;
+  margin-bottom: 1.5% !important;
 }
 
 .right-align {
@@ -130,8 +130,8 @@ p.center-words {
   width: 500px;
 }
 
-.left-pusher {
-  margin-left: 200px;
+.clues-grid {
+  margin-left: 15%;
 }
 
 .make-wider {
@@ -146,9 +146,9 @@ p.center-words {
   width: 500px !important;
 }
 
-.center-button {
-  margin-top: 25px !important;
-  margin-left: 172px !important;
+div.center-button {
+  margin-top: 4% !important;
+  margin-left: 25% !important;
 }
 
 .clue-text {

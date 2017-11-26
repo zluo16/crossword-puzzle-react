@@ -14,7 +14,7 @@ export class CrosswordCluesContainer extends Component {
     const down = downClues.sort((clue1, clue2) => parseInt(clue1.boxId, 10) - parseInt(clue2.boxId, 10))
 
     return (
-      <div className="left-pusher">
+      <div className="clues-grid">
         <Grid columns={2} className="make-wider">
           <Grid.Row>
             <Grid.Column>
