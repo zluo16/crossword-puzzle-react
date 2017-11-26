@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import CrosswordGrid from './crosswordGrid'
 import Nav from './nav'
+import LoginForm from './loginModal'
+// import SignUpForm from './signUpModal'
 import { ConnectedCrosswordCluesContainer } from './crosswordCluesContainer'
 import { connect } from 'react-redux'
 import { Modal, Header } from 'semantic-ui-react'
@@ -13,7 +15,10 @@ export class CrosswordContainer extends Component {
 
   state = {
     open: false,
+    login: false,
+    signup: false,
     completed: false,
+    activeItem: '',
     username: '',
     password: '',
     passwordConfirmation: ''
@@ -43,12 +48,17 @@ export class CrosswordContainer extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
+  onButtonClick = (target) => {
+    this.setState({ [target.name]: true})
+  }
+
   onLogin = () => {
     let loginInfo = Object.assign({},
       { user_name: this.state.user_name },
       { password: this.state.password }
     )
     this.props.actions.login(loginInfo)
+    this.setState({ login: false })
   }
 
   onSignUp = () => {
@@ -61,6 +71,8 @@ export class CrosswordContainer extends Component {
   }
 
   close = () => this.setState({ open: false })
+  closeLoginForm = () => this.setState({ login: false })
+  closeSignUpForm = () => this.setState({ signup: false })
 
   render() {
     const header = this.state.completed ? "Congradulations!!!" : "Something's not quite right."
@@ -69,9 +81,9 @@ export class CrosswordContainer extends Component {
     return (
       <div>
         <Nav
-          onAuthChange={this.onAuthChange}
-          onLogin={this.onLogin}
-          onSignUp={this.onSignUp}
+          onButtonClick={this.onButtonClick}
+          activeItem={this.state.activeItem}
+          loggedIn={this.props.loggedIn}
         />
         <Header size="huge" className="center-align">Crossword Puzzle</Header>
         <CrosswordGrid
@@ -80,6 +92,13 @@ export class CrosswordContainer extends Component {
           onGenerate={this.onGenerate}
         />
         <ConnectedCrosswordCluesContainer />
+
+        <LoginForm
+          open={this.state.login}
+          onLogin={this.onLogin}
+          onAuthChange={this.onAuthChange}
+          close={this.closeLoginForm}
+        />
 
         <Modal size="tiny" open={this.state.open} onClose={this.close}>
           <Modal.Header>
