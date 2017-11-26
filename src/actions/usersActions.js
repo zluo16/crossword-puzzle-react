@@ -6,8 +6,8 @@ export function fetchTopFiveUsers() {
     dispatch({ type: 'LOADING_USERS' })
     return fetch(`${baseUrl}/users`)
       .then(res => res.json())
-      .then(res => {
-        debugger
+      .then(users => {
+        dispatch({ type: 'FETCH_USERS', payload: users })
       })
   }
 }
