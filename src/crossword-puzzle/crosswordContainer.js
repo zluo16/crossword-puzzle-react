@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import CrosswordGrid from './crosswordGrid'
 import Nav from './nav'
 import LoginForm from './loginModal'
-// import SignUpForm from './signUpModal'
+import SignUpForm from './signUpModal'
 import { ConnectedCrosswordCluesContainer } from './crosswordCluesContainer'
 import { connect } from 'react-redux'
 import { Modal, Header } from 'semantic-ui-react'
@@ -16,6 +16,7 @@ export class CrosswordContainer extends Component {
   state = {
     open: false,
     login: false,
+    logout: false,
     signup: false,
     completed: false,
     activeItem: '',
@@ -50,11 +51,14 @@ export class CrosswordContainer extends Component {
 
   onButtonClick = (target) => {
     this.setState({ [target.name]: true})
+    if (target.name === 'logout') {
+      this.props.actions.logout()
+    }
   }
 
   onLogin = () => {
     let loginInfo = Object.assign({},
-      { user_name: this.state.user_name },
+      { user_name: this.state.username },
       { password: this.state.password }
     )
     this.props.actions.login(loginInfo)
@@ -84,6 +88,7 @@ export class CrosswordContainer extends Component {
           onButtonClick={this.onButtonClick}
           activeItem={this.state.activeItem}
           loggedIn={this.props.loggedIn}
+          currentUser={this.props.currentUser}
         />
         <Header size="huge" className="center-align">Crossword Puzzle</Header>
         <CrosswordGrid
@@ -98,6 +103,13 @@ export class CrosswordContainer extends Component {
           onLogin={this.onLogin}
           onAuthChange={this.onAuthChange}
           close={this.closeLoginForm}
+        />
+
+        <SignUpForm
+          open={this.state.signup}
+          onSignUp={this.onSignUp}
+          onAuthChange={this.onAuthChange}
+          close={this.closeSignUpForm}
         />
 
         <Modal size="tiny" open={this.state.open} onClose={this.close}>

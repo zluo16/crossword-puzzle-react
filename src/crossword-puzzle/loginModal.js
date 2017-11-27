@@ -16,6 +16,7 @@ const LoginForm = ({ open, onLogin, onAuthChange, close }) => {
           </Form.Field>
           <Form.Field>
             <input
+              type='password'
               placeholder='Password'
               name='password'
               onChange={onAuthChange}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Header } from 'semantic-ui-react'
 
 export default class Nav extends Component {
 
@@ -11,12 +11,33 @@ export default class Nav extends Component {
   }
 
   render() {
+    const { loggedIn } = this.props
+
     return (
       <Menu stackable>
         <Menu.Item>
           <img src='./1142857-200.png' alt='crossword-icon' />
         </Menu.Item>
 
+        <Menu.Item>
+          <Header size='small'>Jeopardy API Crossword</Header>
+        </Menu.Item>
+
+        {loggedIn ?
+          <Menu.Menu position='right'>
+          <Menu.Item name='currentUser'>
+            {this.props.currentUser.user_name}
+          </Menu.Item>
+
+          <Menu.Item
+            name='logout'
+            active={this.state.activeItem === 'logout'}
+            onClick={this.handleItemClick}
+            >
+            Logout
+          </Menu.Item>
+        </Menu.Menu>
+        :
         <Menu.Menu position='right'>
           <Menu.Item
             name='login'
@@ -34,6 +55,7 @@ export default class Nav extends Component {
             Sign Up
           </Menu.Item>
         </Menu.Menu>
+      }
       </Menu>
     )
   }
