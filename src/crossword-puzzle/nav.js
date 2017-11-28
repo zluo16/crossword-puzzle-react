@@ -11,8 +11,6 @@ export default class Nav extends Component {
   }
 
   render() {
-    const { loggedIn } = this.props
-
     return (
       <Menu stackable>
         <Menu.Item>
@@ -23,8 +21,8 @@ export default class Nav extends Component {
           <Header size='small'>Jeopardy API Crossword</Header>
         </Menu.Item>
 
-        {loggedIn ?
-          <Menu.Menu position='right'>
+        {this.props.loggedIn() ?
+        <Menu.Menu position='right'>
           <Menu.Item name='currentUser'>
             {this.props.currentUser.user_name}
           </Menu.Item>

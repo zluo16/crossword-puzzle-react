@@ -5,6 +5,15 @@ export default class UsersAdapter {
     return fetch(`${baseUrl}/users`)
       .then(res => res.json())
   }
+
+  static updateUserScore(id) {
+    const userData = Object.assign({}, { id: id }, { score: 20 })
+    return fetch(`${baseUrl}/users/${id}`, {
+      method: 'POST',
+      headers: headers(),
+      body: JSON.stringify(userData)
+    }).then(res => res.json())
+  }
 }
 
 function headers() {

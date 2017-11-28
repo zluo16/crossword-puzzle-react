@@ -31,6 +31,10 @@ export function signUp(signUpInfo) {
   }
 }
 
+export function isLoggedIn() {
+  return !!localStorage.getItem('jwt')
+}
+
 export function logout() {
   return (dispatch) => {
     window.localStorage.clear()

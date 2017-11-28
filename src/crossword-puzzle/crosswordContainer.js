@@ -3,6 +3,7 @@ import CrosswordGrid from './crosswordGrid'
 import Nav from './nav'
 import LoginForm from './loginModal'
 import SignUpForm from './signUpModal'
+import TopUsersContainer from './topUsersContainer'
 import { ConnectedCrosswordCluesContainer } from './crosswordCluesContainer'
 import { connect } from 'react-redux'
 import { Modal, Header } from 'semantic-ui-react'
@@ -29,6 +30,7 @@ export class CrosswordContainer extends Component {
     if (this.props.gridInfo.length === 0) {
       this.props.actions.fetchPuzzle()
       this.props.actions.fetchClues()
+      this.props.actions.fetchTopFiveUsers()
     }
   }
 
@@ -67,11 +69,16 @@ export class CrosswordContainer extends Component {
 
   onSignUp = () => {
     let signUpInfo = Object.assign({},
-      { user_name: this.state.user_name },
+      { user_name: this.state.username },
       { password: this.state.password },
       { password_confirmation: this.state.passwordConfirmation }
     )
     this.props.actions.signUp(signUpInfo)
+    this.setState({ signup: false })
+  }
+
+  isLoggedIn = () => {
+    return !!localStorage.getItem('jwt')
   }
 
   close = () => this.setState({ open: false })
@@ -87,15 +94,18 @@ export class CrosswordContainer extends Component {
         <Nav
           onButtonClick={this.onButtonClick}
           activeItem={this.state.activeItem}
-          loggedIn={this.props.loggedIn}
+          loggedIn={this.isLoggedIn}
           currentUser={this.props.currentUser}
         />
+        <TopUsersContainer users={this.props.topUsers} />
         <Header size="huge" className="center-align">Crossword Puzzle</Header>
         <CrosswordGrid
           gridInfo={this.props.gridInfo}
           onSubmit={this.onSubmit}
           onGenerate={this.onGenerate}
         />
+
+
         <ConnectedCrosswordCluesContainer />
 
         <LoginForm
