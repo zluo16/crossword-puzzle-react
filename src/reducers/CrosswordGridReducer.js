@@ -2,7 +2,7 @@ export default function crosswordGrid(state = [], action) {
   switch (action.type) {
 
     case 'ADD_INPUT':
-      let box = state.find(b => b.boxId === action.payload.id)
+      let box = state.find(b => b.boxId == action.payload.id)
       box['value'] = action.payload.value
       return state
 
