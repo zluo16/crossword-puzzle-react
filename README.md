@@ -1,7 +1,7 @@
 # Crossword Puzzle
 ###### A crossword puzzle built with React and Rails | [The Back End](https://github.com/zluo16/crossword-puzzle-api) | [Demo](https://crossword-puzzle.herokuapp.com/)
 
-![Crossword Puzzle Screen Shot](https://raw.githubusercontent.com/zluo16/crossword-puzzle-react/public/crossword-puzzle-screen-shot.png)
+![Crossword Puzzle Screen Shot](http://i.imgur.com/TFpuj3F.png)
 
 ## App description
 - This is an application that generates crosswords puzzles. It does this by
