@@ -15,7 +15,7 @@
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.71.4",
     "webpack": "^3.5.3",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^3.1.11"
   },
   "scripts": {
     "start": "react-scripts start",
